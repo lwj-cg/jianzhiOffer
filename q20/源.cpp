@@ -9,98 +9,40 @@ public:
 		if (s.empty()) return false;
 		auto iter = s.begin();
 		scanSpace(s, iter);
-		if (*iter != '.')
+		bool isNumeric = scanInt(s, iter);
+		if (!isNumeric)
 		{
-			bool isEmpty = scanInt(s, iter);
-			if (isEmpty)
-			{
-				scanSpace(s, iter);
-				if (*iter == '.')
-				{
-					++iter;
-					if (scanUint(s, iter)) return false;
-					else if (iter == s.end()) return true;
-					else if (*iter == 'e' || *iter == 'E')
-					{
-						++iter;
-						if (scanInt(s, iter)) return false;
-						if (iter == s.end()) return true;
-						else if (scanSpace(s, iter)) return true;
-						else return false;
-					}
-					else if (scanSpace(s, iter)) return true;
-					else return false;
-				}
-				else return false;
-			}
-			else if (iter == s.end()) return true;
-			else if (*iter == '.')
-			{
-				++iter;
-				scanUint(s, iter);
-				if (iter == s.end()) return true;
-				else if (*iter == 'e' || *iter == 'E')
-				{
-					++iter;
-					if (scanInt(s, iter)) return false;
-					if (iter == s.end()) return true;
-					else if (scanSpace(s, iter)) return true;
-					else return false;
-				}
-				else if (scanSpace(s, iter)) return true;
-				else return false;
-			}
-			else if (*iter == 'e' || *iter == 'E')
-			{
-				++iter;
-				if (scanInt(s, iter)) return false;
-				if (iter == s.end()) return true;
-				else if (scanSpace(s, iter)) return true;
-				else return false;
-			}
-			else if (scanSpace(s, iter)) return true;
-			else return false;
+			scanSpace(s, iter);
 		}
-		else
+		if (iter != s.end() && *iter == '.')
 		{
 			++iter;
-			if (scanUint(s, iter)) return false;
-			else if (iter == s.end()) return true;
-			else if (*iter == 'e' || *iter == 'E')
-			{
-				++iter;
-				if (scanInt(s, iter)) return false;
-				if (iter == s.end()) return true;
-				else if (scanSpace(s, iter)) return true;
-				else return false;
-			}
-			else if (scanSpace(s, iter)) return true;
-			else return false;
+			isNumeric = scanUint(s, iter) || isNumeric;
 		}
-		return false;
+		if (isNumeric && iter != s.end() && (*iter == 'e' || *iter == 'E'))
+		{
+			++iter;
+			isNumeric = scanInt(s, iter) && isNumeric;
+		}
+		scanSpace(s, iter);
+		return isNumeric && iter == s.end();
 	}
 	bool scanInt(const string& s, string::iterator& iter)
 	{
-		if (s.empty() || iter == s.end()) return true;
+		if (s.empty() || iter == s.end()) return false;
 		if (*iter == '+' || *iter == '-') ++iter;
-		bool isEmpty = true;
-		while (iter != s.end() && *iter >= '0' && *iter <= '9')
-		{
-			++iter;
-			isEmpty = false;
-		}
-		return isEmpty;
+		return scanUint(s, iter);
 	}
 	bool scanUint(const string& s, string::iterator& iter)
 	{
-		if (s.empty() || iter == s.end()) return true;
-		bool isEmpty = true;
+		if (s.empty() || iter == s.end()) return false;
+		bool isNumeric = false;
 		while (iter != s.end() && *iter >= '0' && *iter <= '9')
 		{
 			++iter;
-			isEmpty = false;
+			isNumeric = true;
 		}
-		return isEmpty;
+		return isNumeric;
 	}
 	bool scanSpace(const string& s, string::iterator& iter)
 	{
