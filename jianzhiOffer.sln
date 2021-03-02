@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q19", "q19\q19.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q05", "q05\jianzhiOffer.vcxproj", "{1A815F09-ADD5-40DF-8853-7D04FE84A6FD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q20", "q20\q20.vcxproj", "{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{1A815F09-ADD5-40DF-8853-7D04FE84A6FD}.Release|x64.Build.0 = Release|x64
 		{1A815F09-ADD5-40DF-8853-7D04FE84A6FD}.Release|x86.ActiveCfg = Release|Win32
 		{1A815F09-ADD5-40DF-8853-7D04FE84A6FD}.Release|x86.Build.0 = Release|Win32
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Debug|x64.ActiveCfg = Debug|x64
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Debug|x64.Build.0 = Debug|x64
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Debug|x86.ActiveCfg = Debug|Win32
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Debug|x86.Build.0 = Debug|Win32
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Release|x64.ActiveCfg = Release|x64
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Release|x64.Build.0 = Release|x64
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Release|x86.ActiveCfg = Release|Win32
+		{DAE2EC78-155F-4875-AEE6-ADF1C2AA34EC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
